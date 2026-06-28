@@ -1,0 +1,10 @@
+#environment files
+.env
+backend/.env
+
+#node module
+node_modules/
+backend/node_modules/
+
+#Log
+*.log
