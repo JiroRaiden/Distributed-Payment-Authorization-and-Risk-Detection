@@ -12,9 +12,12 @@ export function evaluateTransactionRisk(transaction) {
         evaluateLocationSignal(transaction),
         evaluateMerchantSignal(transaction),
     ];
+
+    const hasTriggeredSignal = signals.some((signal) => signal.triggered);
+
     return {
-        decision: "review",
+        decision: hasTriggeredSignal ? "review" : "approve",
         signals,
-        reason: "TODO: Define final decision rule",
+        reason: hasTriggeredSignal ? "One or more fraud signals were triggered" : "No fraud signals were triggered",
     };
 }
